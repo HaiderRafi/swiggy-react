@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RestaurantsCards from "./RestaurantsCards";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const RestaurantsDetails = () => {
   let [restoData, setRestoData] = useState([]);  //state for api call
@@ -63,12 +64,13 @@ const RestaurantsDetails = () => {
       <div className="flex justify-center">
         <div className="flex flex-wrap w-[1000px]  justify-center p-2 m-2">
           {restoData.map((data,index) => {
-            return <RestaurantsCards key={index} cards={data} />;
+            return <Link key={index} to={`restaurant/${data.info.id}`} ><RestaurantsCards key={index} cards={data} /></Link>
           })}
         </div>
       </div>
     </>
   );
 };
+
 
 export default RestaurantsDetails;

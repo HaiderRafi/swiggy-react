@@ -6,6 +6,8 @@ import store from "./utils/redux/store";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Body from "./components/Body";
 import Search from "./components/Search";
+import RestaurantMenu from "./components/RestaurantMenu";
+import Cart from "./components/Cart";
 
 let appRouter = createBrowserRouter([
   {
@@ -19,6 +21,14 @@ let appRouter = createBrowserRouter([
       {
         path: "/search",
         element: <Search />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/restaurant/:id",
+        element: <RestaurantMenu />,
       },
     ],
   },
