@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import RestaurantsCards from "./RestaurantsCards";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Shimmer from "./Shimmer";
 
 const RestaurantsDetails = () => {
   let [restoData, setRestoData] = useState([]);  //state for api call
@@ -53,7 +54,7 @@ const RestaurantsDetails = () => {
   }, [page]);
 
   if (restoData.length === 0) {
-    return <h1>Loading...</h1>;
+    return <Shimmer/>;
   }
 
   return (

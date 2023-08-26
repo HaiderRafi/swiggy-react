@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IMG_LINK } from "../utils/config";
 import CarouselCards from "./CarouselCards";
+import CarouselLoader from "./CarouselLoader";
 
 let Carousel=()=>{
     let[carouselData,setCarouselData]=useState([]);
@@ -20,7 +21,7 @@ let Carousel=()=>{
     },[])
 
     if(carouselData.length===0){
-        return <h1>Loading...</h1>
+        return <CarouselLoader/>
     }
     
     return(

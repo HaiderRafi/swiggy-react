@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RestaurantMenuCards from "./RestaurantMenuCards";
+import Shimmer from "./Shimmer";
 
 const RestaurantMenu = () => {
   let [restoMenuData, setRestoMenuData] = useState([]);
@@ -27,7 +28,7 @@ const RestaurantMenu = () => {
   }, []);
 
   if (restoMenuData.length === 0) {
-    return <h1>Loading...</h1>;
+    return <Shimmer/>;
   }
 
   return (

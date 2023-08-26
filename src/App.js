@@ -9,6 +9,9 @@ import Search from "./components/Search";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Cart from "./components/Cart";
 
+import Login from "./components/Login";
+import Offers from "./components/Offers";
+
 let appRouter = createBrowserRouter([
   {
     path: "/",
@@ -27,7 +30,19 @@ let appRouter = createBrowserRouter([
         element: <Cart />,
       },
       {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/offers",
+        element: <Offers />,
+      },
+      {
         path: "/restaurant/:id",
+        element: <RestaurantMenu />,
+      },
+      {
+        path: "offers/restaurant/:id",
         element: <RestaurantMenu />,
       },
     ],

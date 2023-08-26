@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTwitter, FaLinkedinIn, FaInstagram, FaGithub } from 'react-icons/fa';
+import { FaTwitter, FaLinkedinIn, FaInstagram, FaGithub } from "react-icons/fa";
 
 let Footer = () => {
   return (
@@ -56,18 +56,45 @@ let Footer = () => {
 
         <div className="pt-10 flex justify-evenly items-center">
           <div>
-            <img
+            <a href="/"><img
               className="w-[200px]"
               src="https://driver-media-assets.swiggy.com/drivers/q_auto,f_auto,fl_lossy,c_fill/ride-with-us/icons/footer.png"
-            />
+            /></a>
           </div>
 
-          <div className="text-gray-400 text-lg font-semibold "> &copy;Haider Rafi</div>
+          <div className="text-gray-400 text-lg font-semibold ">
+            {" "}
+            &copy;Haider Rafi
+          </div>
           <div className="flex">
-            <div className="pr-2"><FaTwitter size='2.5rem' className="fill-white "/></div>
-            <div className="pr-2"><FaLinkedinIn size='2.5rem'  className="fill-white "/></div>
-            <div className="pr-2"><FaInstagram  size='2.5rem' className="fill-white "/></div>
-            <div className="pr-2"><FaGithub size='2.5rem'  className="fill-white "/></div>
+            <a
+              href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D"
+              target="_blank"
+            >
+              {" "}
+              <div className="pr-2">
+                <FaTwitter size="2.5rem" className="fill-white " />
+              </div>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/haider-rafi-5181b9255/"
+              target="_blank"
+            >
+              <div className="pr-2">
+                <FaLinkedinIn size="2.5rem" className="fill-white " />
+              </div>
+            </a>
+            <a href="https://www.instagram.com/" target="_blank">
+              {" "}
+              <div className="pr-2">
+                <FaInstagram size="2.5rem" className="fill-white " />
+              </div>
+            </a>
+            <a href="https://github.com/HaiderRafi" target="_blank">
+              <div className="pr-2">
+                <FaGithub size="2.5rem" className="fill-white " />
+              </div>
+            </a>
           </div>
         </div>
       </div>
