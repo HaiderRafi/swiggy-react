@@ -4,7 +4,7 @@ import { dropDownText } from "../utils/redux/dropDownSlice";
 import { Link } from "react-router-dom";
 
 let Header = () => {
-  let [selectedDropValue, SetSelectedDropValue] = useState("delhi"); //state for drop down value
+  let [selectedDropValue, SetSelectedDropValue] = useState("patna"); //state for drop down value
   let dispatch = useDispatch(); //global dispathc
 
   //subscribing to the store for cart number
@@ -43,9 +43,11 @@ let Header = () => {
             onChange={handleSelectChange}
             className="pr-2 ml-5 bg-gray-100 text-gray-600 hover:text-orange-500  font-semibold hidden md:block"
           >
-            <option value="delhi">Delhi</option>
             <option value="patna">Patna</option>
             <option value="banglore">Banglore</option>
+            <option value="delhi">Delhi</option>
+            
+            
             
           </select>
         </div>
