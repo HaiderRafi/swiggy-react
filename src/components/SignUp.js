@@ -7,7 +7,7 @@ const SignUp = () => {
   let [name, setName] = useState("");
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
-  let [doesLoginBtn, setDoesLoginBtn] = useState(false);
+  let [doesLoginBtn, setDoesLoginBtn] = useState(false);   //initial true in login  , initial false in signUp
 
   const navigate = useNavigate();
 

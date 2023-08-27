@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RestaurantsCards from "./RestaurantsCards";
 import { Link } from "react-router-dom";
+import Shimmer from "./Shimmer";
 
 const Offers = () => {
   let [offerData, setOfferData] = useState([]);
@@ -16,6 +17,10 @@ const Offers = () => {
   useEffect(() => {
     offerApi();
   });
+
+  if(offerData.length===0){
+    return <Shimmer/>
+  }
 
   return (
     <>

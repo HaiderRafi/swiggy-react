@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SignUp from "./SignUp";
 import { sendToLogin } from "../utils/redux/loginSlice";
 
@@ -8,7 +8,7 @@ const Login = () => {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [userDetails, setUserDetails] = useState({});
-  let [doesLoginBtn, setDoesLoginBtn] = useState(true);
+  let [doesLoginBtn, setDoesLoginBtn] = useState(true);   //initial true in login  , initial false in signUp
 
   //for dispatching an action
   let dispatch = useDispatch();
@@ -98,7 +98,7 @@ const Login = () => {
             <h1 className="pr-2 text-center sm:text-left">
               Don't have a Swiggy account yet?
             </h1>
-            <button
+          <button
               onClick={() => setDoesLoginBtn(false)}
               className="w-20 bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
             >
