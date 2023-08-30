@@ -9,10 +9,13 @@ let loginSlice=createSlice({
         sendToLogin:(state,action)=>{
             state.islogin=action.payload
 
+        },
+        logOut:(state)=>{
+            state.islogin={}
         }
     }
 
 })
 
-export const{sendToLogin}=loginSlice.actions
+export const{sendToLogin,logOut}=loginSlice.actions
 export default loginSlice.reducer
