@@ -4,17 +4,30 @@ import { useDispatch } from "react-redux";
 import { addItem, removeItem } from "../utils/redux/cartSlice";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const RestaurantMenuCards = (props) => {
   let dispatch = useDispatch(); //global dispatch
 
   //disptaching an action in a button click function to add items in store
+  //added tostify also
   function addFoodItems(data) {
     dispatch(addItem(data?.card?.info));
+    toast.success("Item Added To Cart",{
+      position: "top-left",
+      
+    });
   }
 
   //disptaching an action in a button click function to removeadd items in store
+  //added tostify also
   function removeFoodItems() {
     dispatch(removeItem());
+    toast.error("Item Removed From Cart",{
+      position: "top-left"
+      
+    });
   }
 
   return (
@@ -68,6 +81,7 @@ const RestaurantMenuCards = (props) => {
             </>
           ))}
       </div>
+      <ToastContainer /> {/*Tostify added  */}
     </div>
   );
 };
