@@ -101,9 +101,9 @@ const Cart = () => {
         
         <button  onClick={()=>{
            if(isToken.token){
-            alert("Order Confirm")
-            navigate('/')
-            clearCartSlice()
+            // alert("Order Confirm")
+            navigate('/paynow')
+            // clearCartSlice()
            }else{
             navigate('/login')
            }

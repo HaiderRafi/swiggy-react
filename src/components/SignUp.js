@@ -52,7 +52,7 @@ const SignUp = () => {
   useEffect(() => {
     let timer;
     if (warning && warning?.status === "success") {
-      toast.success("Signup Succesfull,Go to Login Page");
+      toast.success("Signup Succesfull");
       timer = setTimeout(() => {
         navigate("/");
       }, 1500);

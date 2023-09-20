@@ -11,6 +11,7 @@ import Cart from "./components/Cart";
 
 import Login from "./components/Login";
 import Offers from "./components/Offers";
+import PayNow from "./components/PayNow";
 
 let appRouter = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ let appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/paynow",
+        element: <PayNow />,
       },
       {
         path: "/login",
