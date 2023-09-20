@@ -3,12 +3,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { dropDownText } from "../utils/redux/dropDownSlice";
 import { Link } from "react-router-dom";
 import { logOut } from "../utils/redux/loginSlice";
+import { addItem, clearCart } from "../utils/redux/cartSlice";
 
 let Header = () => {
   let [selectedDropValue, SetSelectedDropValue] = useState("patna"); //state for drop down value
   let dispatch = useDispatch(); //global dispathc
 
-  //subscribing to the store for cart number
+ 
+
+  //local storage
+  useEffect(() => {
+    const storedCartItems = JSON.parse(localStorage.getItem("cartItems"));
+    if (storedCartItems) {
+      // Use the clearCart action to clear the initial empty cart
+      dispatch(clearCart());
+      storedCartItems.forEach((item) => dispatch(addItem(item)));
+    }
+  }, []);
+
+   //subscribing to the store for cart number
   let cartCount = useSelector((store) => store.cart.items);
   console.log(cartCount.length);
 
@@ -37,11 +50,12 @@ let Header = () => {
   function handleSelectChange(e) {
     SetSelectedDropValue(e.target.value);
   }
-
+// flex justify-around p-4  items-center 
   return (
     <>
-      <div className=" flex justify-around p-4  items-center bg-gray-100">
-        <div className="flex ">
+    {/* i make header sticky fixed to top */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-gray-100 flex justify-around p-4  items-center ">
+        <div className="flex  ">
           <a href="/">
             {" "}
             <img

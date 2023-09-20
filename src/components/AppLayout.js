@@ -9,7 +9,10 @@ let AppLayout = () => {
     <>
       <Header />
       {/* <Body/> */}
+      <div className="pt-20">
       <Outlet />
+      </div>
+      
       <Footer />
 
       {/* outlet */}

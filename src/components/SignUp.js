@@ -3,11 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Login from "./Login";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const SignUp = () => {
   let [name, setName] = useState("");
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
-  let [doesLoginBtn, setDoesLoginBtn] = useState(false);   //initial true in login  , initial false in signUp
+  let [doesLoginBtn, setDoesLoginBtn] = useState(false); //initial true in login  , initial false in signUp
+  let [warning, setWarning] = useState(null);    //used in tostify
 
   const navigate = useNavigate();
 
@@ -33,13 +37,24 @@ const SignUp = () => {
       }
     );
 
-    let data = await response.text();
-    console.log(data);
+    let data = await response.json();
+    console.log(data?.message);
+    setWarning(data);
   }
 
-  function singUp() {
-    apiCall();
+   function singUp() {
+     apiCall();
   }
+
+  //using tostify
+  useEffect(()=>{
+    if (warning?.status === "success") {
+      toast.success("Signup Succesfull,Go to Login Page");
+    } else {
+      toast.error(warning?.message);
+    }
+
+  },[warning])
   return doesLoginBtn ? (
     <Login />
   ) : (
@@ -108,7 +123,7 @@ const SignUp = () => {
               <button
                 onClick={() => {
                   singUp();
-                  alert("User created, go to login page");
+                  // alert(`User created, go to login page ${warning}  `);
                 }}
                 type="submit"
                 className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
@@ -119,6 +134,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />   {/*Tostify added  */}
     </div>
   );
 };

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import EmptyCart from "./EmptyCart";
-import { clearCart } from "../utils/redux/cartSlice";
+import { addItem, clearCart, removeItem } from "../utils/redux/cartSlice";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
@@ -9,11 +9,33 @@ const Cart = () => {
   let cartItems = useSelector((store) => store.cart.items);
 
   let isToken = useSelector((store) => store.login.islogin);
+  // console.log(cartItems[0].id);
 
   let navigate=useNavigate()
   let dispatch = useDispatch();
 
 
+  //local storage
+  useEffect(() => {
+    const storedCartItems = JSON.parse(localStorage.getItem("cartItems"));
+    if (storedCartItems) {
+      dispatch(clearCart()); // Clear the initial empty cart
+      storedCartItems.forEach((item) => dispatch(addItem(item)));
+    }
+  }, []);
+
+  //toremove
+  function addItems(data){
+    dispatch(addItem(data))
+  }
+
+  function removeItems(data){
+    dispatch(removeItem(data))
+  }
+
+
+
+  
   
 
   function clearCartSlice() {
@@ -51,6 +73,8 @@ const Cart = () => {
                 <h1 className="font-medium text-base pl-2  ">
                   &#9658;{data.name}:- RS{" "}
                   {data.defaultPrice || data.price / 100}
+                  <button onClick={()=>addItems(data)} >Add {}</button>
+                  <button onClick={()=>removeItems()}>Remove</button>
                 </h1>
               </>
             );
@@ -93,3 +117,10 @@ const Cart = () => {
 };
 
 export default Cart;
+
+
+
+
+
+
+

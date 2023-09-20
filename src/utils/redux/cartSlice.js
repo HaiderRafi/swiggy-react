@@ -8,12 +8,15 @@ let cartSlice=createSlice({
     reducers:{
         addItem:(state,action)=>{
             state.items.push(action.payload);
+            localStorage.setItem("cartItems", JSON.stringify(state.items));   //for local storage
         },
         removeItem:(state,action)=>{
             state.items.pop();
+            localStorage.setItem("cartItems", JSON.stringify(state.items));   //for local storage
         },
         clearCart:(state)=>{
             state.items=[]
+            localStorage.removeItem("cartItems");                              //for local storage
         }
     }
 })

@@ -4,17 +4,20 @@ import { Link, useNavigate } from "react-router-dom";
 import SignUp from "./SignUp";
 import { sendToLogin } from "../utils/redux/loginSlice";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Login = () => {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [userDetails, setUserDetails] = useState({});
-  let [doesLoginBtn, setDoesLoginBtn] = useState(true);   //initial true in login  , initial false in signUp
+  let [doesLoginBtn, setDoesLoginBtn] = useState(true); //initial true in login  , initial false in signUp
+  
 
   //for dispatching an action
   let dispatch = useDispatch();
 
   let isToken = useSelector((store) => store.login.islogin);
-  
 
   let navigate = useNavigate();
 
@@ -55,11 +58,13 @@ const Login = () => {
       dispatch(sendToLogin(data));
       
 
+      //comment this part
       // setUserDetails(data)
       //if token is there then navigate to home page
-      if(isToken.token){
-        navigate("/")
-      }
+      // if(isToken.token){
+      //   navigate("/")
+      // }
+
       // console.log(userDetails); //this ine shuld be in store
     } catch (error) {
       // setLoading(false);
@@ -68,6 +73,25 @@ const Login = () => {
       // toast.error(`${errMsg}`);
     }
   };
+
+  //loggin bug fixed
+  //and tostify added
+  useEffect(() => {
+    let timer;
+    if (isToken.token) {
+      timer = setTimeout(() => {
+        navigate("/");
+      }, 1500);
+
+      toast.success("Login Succesfull");
+    } else {
+      toast.error(isToken.message);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [isToken]);
 
   const handleSignIn = () => {
     login();
@@ -84,10 +108,10 @@ const Login = () => {
           alt="Signup"
         />
         <p className="text-white mt-2 text-center font-bold text-3xl sm:text-5xl">
-        Swiggy Karo,
+          Swiggy Karo,
         </p>
         <p className="text-yellow-200 mt-2 text-center font-semibold text-xl sm:text-4xl">
-        Phir Jo Chahe Karo!
+          Phir Jo Chahe Karo!
         </p>
       </div>
 
@@ -98,7 +122,7 @@ const Login = () => {
             <h1 className="pr-2 text-center sm:text-left">
               Don't have a Swiggy account yet?
             </h1>
-          <button
+            <button
               onClick={() => setDoesLoginBtn(false)}
               className="w-20 bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
             >
@@ -144,6 +168,7 @@ const Login = () => {
           </h1>
         </div>
       </div>
+       <ToastContainer /> {/*Tostify added  */}
     </div>
   );
 };
