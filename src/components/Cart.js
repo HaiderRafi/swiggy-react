@@ -5,7 +5,7 @@ import { addItem, clearCart, removeItem } from "../utils/redux/cartSlice";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-    let x=2;
+  
   let cartItems = useSelector((store) => store.cart.items);
 
   let isToken = useSelector((store) => store.login.islogin);
@@ -24,14 +24,14 @@ const Cart = () => {
     }
   }, []);
 
-  //toremove
-  function addItems(data){
-    dispatch(addItem(data))
-  }
+  //toremove and add
+  // function addItems(data){
+  //   dispatch(addItem(data))
+  // }
 
-  function removeItems(data){
-    dispatch(removeItem(data))
-  }
+  // function removeItems(data){
+  //   dispatch(removeItem(data))
+  // }
 
 
 
@@ -73,8 +73,8 @@ const Cart = () => {
                 <h1 className="font-medium text-base pl-2  ">
                   &#9658;{data.name}:- RS{" "}
                   {data.defaultPrice || data.price / 100}
-                  <button onClick={()=>addItems(data)} >Add {}</button>
-                  <button onClick={()=>removeItems()}>Remove</button>
+                  {/* <button onClick={()=>addItems(data)} >Add {}</button>
+                  <button onClick={()=>removeItems()}>Remove</button> */}
                 </h1>
               </>
             );
